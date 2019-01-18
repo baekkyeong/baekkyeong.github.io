@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>What makes you feel sleepy?</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+
+<body>
+    <div class="everysize result"></div>
+    <!--번역된 값이 보여지는 늘어나는 상자-->
+
+    <textarea class="inputcss inputjs">Type here!</textarea>
+    <!-- 텍스트 에어리어가 -->
+    
+    <div class="everysize">
+        <button class="btn submit" onclick="submitjs()">Submit!</button>
+        <button class="btn print" onclick="window.print()">Let's Print!</button>
+    </div>
+
+    <script>
+        // 키와 값을 가지는 alphabet 객체를 만든다.
+
+        // 예를 들어, alphabet.a 혹은 alphabet['a'] 라고 하면
+        // 'icons/a.png' 값을 얻을 수 있다.
+        var alphabet = {
+            a: 'icons/a.png',
+            b: 'icons/b.png',
+            c: 'icons/c.png',
+            d: 'icons/d.png',
+            e: 'icons/e.png',
+            f: 'icons/f.png',
+            g: 'icons/g.png',
+            h: 'icons/h.png',
+            i: 'icons/i.png',
+            j: 'icons/j.png',
+            k: 'icons/k.png',
+            l: 'icons/l.png',
+            m: 'icons/m.png',
+            n: 'icons/n.png',
+            o: 'icons/o.png',
+            p: 'icons/p.png',
+            q: 'icons/q.png',
+            r: 'icons/r.png',
+            s: 'icons/s.png',
+            t: 'icons/t.png',
+            u: 'icons/u.png',
+            v: 'icons/v.png',
+            w: 'icons/w.png',
+            x: 'icons/x.png',
+            y: 'icons/y.png',
+            z: 'icons/z.png',
+
+            A: 'icons/a.png',
+            B: 'icons/b.png',
+            C: 'icons/c.png',
+            D: 'icons/d.png',
+            E: 'icons/e.png',
+            F: 'icons/f.png',
+            G: 'icons/g.png',
+            H: 'icons/h.png',
+            I: 'icons/i.png',
+            J: 'icons/j.png',
+            K: 'icons/k.png',
+            L: 'icons/l.png',
+            M: 'icons/m.png',
+            N: 'icons/n.png',
+            O: 'icons/o.png',
+            P: 'icons/p.png',
+            Q: 'icons/q.png',
+            R: 'icons/r.png',
+            S: 'icons/s.png',
+            T: 'icons/t.png',
+            U: 'icons/u.png',
+            V: 'icons/v.png',
+            W: 'icons/w.png',
+            X: 'icons/x.png',
+            Y: 'icons/y.png',
+            Z: 'icons/z.png',
+
+            otherwise: 'icons/space.png'
+        };
+
+        //변수 var 안에 작은 키들이 a~z 자바스크립트에서 변수와 중괄호를 쓰는 것이 글자를 문자로 대응시키는 역할을 함
+
+
+
+        function submitjs() {
+            var value = document.querySelector('.inputjs').value;
+
+            //textarea 태그의 값을 가져온다
+
+
+            var resultBox = document.querySelector('.result');
+
+            //result 클래스가 있는 div를 가져온다
+
+            resultBox.textContent = '';
+
+            //result div의 값을 지운다
+
+            // value 의 문자 하나하나씩 지나가며 아래의 로직을 실행시킨다.
+            
+            /* 아래는 for 순환문으로, 
+            for (초기식; 조건식; 증분식) {
+                로직
+            }
+            
+            위와 같은 문법으로 구성되어 있다.
+            먼저, 초기식을 한 번 실행한다.
+            그리고 나서, 1) 조건식이 참일 경우 로직을 실행시키고, 로직이 끝나면 증분식을 실행한다.
+            그 이후에는 계속 1) 을 반복적으로 한다.
+            */
+
+            // 처음에 i = 0 으로 시작한다.
+            // 그리고 i 의 값이 value 의 길이보다 작는 한 계속 반복된다.
+            // 한 번 로직 실행이 끝나면, i의 값을 1 증가시킨다.
+
+            // 예를 들어, value (입력한 값)이 cola 라고 하자.
+            // 그러면, value의 길이는 4이다.
+            // 처음, i = 0 정의, i < 4(길이) 이므로 로직 실행. 끝난 후 i 는 i + 1 되므로 i = 1이 된다.
+            // i = 1, i < 4 이므로 로직 실행. i = i + 1
+            // i = 2, i < 4 이므로 로직 실행. i = i + 1
+            // i = 3, i < 4 이므로 로직 실행. i = i + 1
+            // i = 4, i < 4 가 아니므로 for 문 실행 종료
+
+            for(var i = 0; i < value.length; i = i + 1) {
+                // value 는 'cola' 라고 가정해보자.
+                // 그러면 value[0] 은 c
+                // value[1] 은 o
+                // value[2] 은 l
+                // value[3] 은 a 이다.
+
+                var character = value[i];
+
+                var src = alphabet[character];
+                
+                var img = new Image();
+                //자바스크립트에서 img 태그를 만든다
+
+                if (src) {
+                    img.src = src    
+                    //src 값이 있으면 그 값을 img src로 쓴다
+                } else { 
+                    img.src = alphabet.otherwise
+                    //(문자가 알파벳이 아니어서) src 값이 없으면 alphabet.otherwise의 값인 'icons/space.png' 가 img src가 된다.
+                };
+
+                resultBox.appendChild(img);
+                //result div에 img를 붙인다.
+            }
+        }
+    </script>
+
+</body>
+</html>
